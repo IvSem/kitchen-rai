@@ -1,0 +1,140 @@
+@import url('./font.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	body,
+	html {
+		@apply h-full;
+	}
+	body {
+		@apply bg-white font-sans text-base font-medium text-primary dark:text-white/70 sm:text-lg;
+	}
+
+	.wrapper {
+		@apply flex min-h-full flex-col dark:bg-black dark:text-white/70 overflow-hidden;
+	}
+
+	.dark {
+		@apply bg-black text-white/70;
+	}
+
+	[x-cloak] {
+		display: none !important;
+	}
+
+	*::selection {
+		@apply bg-red-300 text-white;
+	}
+
+	*::-webkit-scrollbar {
+		@apply h-[4px] w-[6px];
+	}
+
+	*::-webkit-scrollbar-track {
+		@apply bg-[#ddd];
+	}
+
+	.dark *::-webkit-scrollbar-track {
+		@apply bg-[#222];
+	}
+
+	*::-webkit-scrollbar-thumb {
+		@apply rounded bg-[#aaa];
+	}
+
+	.dark *::-webkit-scrollbar-thumb {
+		@apply rounded bg-[#444];
+	}
+
+	*::-webkit-scrollbar-thumb:hover {
+		@apply bg-red-300;
+	}
+
+	.stage,
+	h1,
+	.h1,
+	h2,
+	.h2,
+	.h2-n,
+	h3,
+	.h3,
+	h4,
+	.h4,
+	h5,
+	.h5,
+	h6,
+	.h6 {
+		@apply  font-bold tracking-tight text-black;
+	}
+
+	.dark .stage,
+	.dark h1,
+	.dark .h1,
+	.dark h2,
+	.dark .h2,
+	.dark .h2-n,
+	.dark h3,
+	.dark .h3,
+	.dark h4,
+	.dark .h4,
+	.dark h5,
+	.dark .h5,
+	.dark h6,
+	.dark .h6 {
+		@apply text-white;
+	}
+
+	.stage {
+		@apply text-base font-medium md:text-lg;
+	}
+
+	h1,
+	.h1 {
+		@apply xs:text-6xl text-5xl sm:text-8xl;
+	}
+
+	.h1-home {
+		@apply xs:text-[2rem] text-[1.9rem] sm:text-[2.8rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-6xl xl:text-7xl 2xl:text-8xl;
+	}
+
+	h2,
+	.h2 {
+		@apply xs:text-5xl text-4xl sm:text-6xl md:text-7xl;
+	}
+
+	.h2-n {
+		@apply text-3xl lg:text-[3.375rem] lg:leading-none;
+	}
+
+	h3,
+	.h3 {
+		@apply xs:text-4xl text-3xl sm:text-5xl;
+	}
+
+	h4,
+	.h4 {
+		@apply text-2xl sm:text-3xl;
+	}
+
+	h5,
+	.h5 {
+		@apply text-xl sm:text-2xl;
+	}
+
+	h6,
+	.h6 {
+		@apply text-lg sm:text-xl;
+	}
+
+	b,
+	strong {
+		@apply text-black;
+	}
+
+	.dark b,
+	.dark strong {
+		@apply text-white;
+	}
+}
