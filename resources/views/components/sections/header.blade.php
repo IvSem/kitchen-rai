@@ -144,7 +144,9 @@
 				</li>
 			</ul>
 		</nav>
-		@include('layouts.navigation')
+
+        @include('layouts.navigation')
+
 		<!--
 			Mobile-menu
 			-->
