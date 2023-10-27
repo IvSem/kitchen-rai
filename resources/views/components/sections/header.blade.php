@@ -144,8 +144,10 @@
 				</li>
 			</ul>
 		</nav>
-
-		<!-- Mobile-menu -->
+		@include('layouts.navigation')
+		<!--
+			Mobile-menu
+			-->
 		{{-- <nav class="navbar transition-left left-[-100%] duration-300 md:hidden"
 			:class="menuIsOpen && '!left-0'">
 			<ul class="container flex flex-col gap-y-4"
