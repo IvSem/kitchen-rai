@@ -9,15 +9,15 @@
 		@apply h-full;
 	}
 	body {
-		@apply bg-white font-sans text-base font-medium text-primary dark:text-white/70 sm:text-lg;
+		@apply bg-white font-sans text-base font-medium  dark:text-white/70 sm:text-lg;
 	}
 
 	.wrapper {
-		@apply flex min-h-full flex-col dark:bg-black dark:text-white/70 overflow-hidden;
+		@apply dark:bg-tone-night-bg dark:text-tone-day-100 flex min-h-full flex-col overflow-hidden;
 	}
 
 	.dark {
-		@apply bg-black text-white/70;
+		@apply bg-gray-800 text-white/70;
 	}
 
 	[x-cloak] {
@@ -66,7 +66,7 @@
 	.h5,
 	h6,
 	.h6 {
-		@apply  font-bold tracking-tight text-black;
+		@apply font-bold tracking-tight text-black;
 	}
 
 	.dark .stage,
@@ -92,16 +92,16 @@
 
 	h1,
 	.h1 {
-		@apply xs:text-6xl text-5xl sm:text-8xl;
+		@apply text-5xl xs:text-6xl sm:text-8xl;
 	}
 
 	.h1-home {
-		@apply xs:text-[2rem] text-[1.9rem] sm:text-[2.8rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-6xl xl:text-7xl 2xl:text-8xl;
+		@apply text-[1.9rem] xs:text-[2rem] sm:text-[2.8rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-6xl xl:text-7xl 2xl:text-8xl;
 	}
 
 	h2,
 	.h2 {
-		@apply xs:text-5xl text-4xl sm:text-6xl md:text-7xl;
+		@apply text-4xl xs:text-5xl sm:text-6xl md:text-7xl;
 	}
 
 	.h2-n {
@@ -110,7 +110,7 @@
 
 	h3,
 	.h3 {
-		@apply xs:text-4xl text-3xl sm:text-5xl;
+		@apply text-3xl xs:text-4xl sm:text-5xl;
 	}
 
 	h4,
@@ -136,5 +136,254 @@
 	.dark b,
 	.dark strong {
 		@apply text-white;
+	}
+}
+
+@layer components {
+	.navbar {
+		@apply fixed top-0 z-40 h-full w-full overflow-auto bg-black before:fixed before:left-0 before:top-0 before:z-[41] before:h-[60px] before:w-full before:bg-gray-50 max-[768px]:pb-10 max-[768px]:pt-[97px];
+	}
+	.navbar__inner {
+		@apply flex h-full items-center;
+	}
+	.navbar__link {
+		@apply relative inline-block whitespace-nowrap text-sm tracking-wide transition-colors hover:text-white max-[768px]:text-white;
+	}
+	._after {
+		position: relative;
+	}
+
+	@media (any-hover: hover) {
+		._after:hover::after {
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		}
+	}
+
+	._after::after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		transform: scaleX(0);
+		height: 2px;
+		bottom: -2px;
+		left: 0;
+		background-color: theme('colors.primary.400');
+		transform-origin: bottom right;
+		@apply transition-transform;
+	}
+
+	._active._after::after {
+		transform: scaleX(1);
+		transform-origin: bottom left;
+	}
+
+	/*.navbar__link::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: theme("colors.red.lighter");
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    .navbar__link:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    .navbar__link._active::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }*/
+
+	.section {
+		@apply py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32;
+	}
+
+	.section__header {
+		@apply mb-12 xs:mb-14 sm:mb-16 md:mb-20 lg:mb-24;
+	}
+
+	.section__body {
+	}
+
+	.section__footer {
+		@apply mt-16 md:mt-20 md:mt-24 lg:mt-28;
+	}
+
+	.footer {
+		@apply py-10 text-xs text-white/50 md:py-12 md:text-sm;
+	}
+
+	/* ---  */
+	.popup {
+		@apply fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm transition-all duration-300;
+	}
+
+	.popup__outer {
+		@apply flex min-h-screen items-center justify-center;
+	}
+
+	.popup__inner {
+		@apply relative rounded-[0.625rem] bg-white px-4 py-[4.375rem] sm:px-9;
+	}
+
+	.popup__btn {
+		@apply absolute right-7 top-7 z-10;
+	}
+
+	.popup__header {
+		@apply mb-7 xs:mb-12;
+	}
+
+	.popup__body {
+	}
+
+	.popup__footer {
+		@apply mt-8 xs:mt-10 sm:mt-12 md:mt-16 lg:mt-20;
+	}
+
+	/* --- */
+	/* --- */
+	.link {
+		@apply whitespace-nowrap transition-colors;
+	}
+
+	.link:hover {
+		@apply text-red-700;
+	}
+
+	.link-red {
+		@apply text-red-700;
+	}
+
+	.dark .link-red {
+		@apply text-red-400;
+	}
+
+	.link-red:hover {
+		@apply text-blue-400;
+	}
+
+	.dark .link-red:hover {
+		@apply text-blue-400;
+	}
+
+	/* --- */
+	.btn {
+		@apply inline-flex h-12 flex-row items-center whitespace-nowrap rounded-full px-8 text-base tracking-wide transition-colors;
+	}
+
+	.btn-red {
+		@apply bg-red text-white transition-all duration-300;
+	}
+
+	.btn-red:hover {
+		@apply bg-blue-400;
+	}
+
+	.btn-primary {
+		@apply bg-primary-400;
+	}
+
+	.btn-blue:hover {
+		@apply bg-red;
+	}
+
+	.btn-has-left-icon {
+		@apply gap-4 pl-2;
+	}
+
+	.btn-has-right-icon {
+		@apply gap-4 pr-2;
+	}
+
+	.btn-with-only-icon {
+		@apply px-2;
+	}
+
+	/* --- */
+	.bg-card {
+		@apply relative h-96 overflow-hidden rounded-2xl px-6 pb-10 pt-7 text-white/90 sm:px-8;
+	}
+
+	.bg-card__bg {
+		@apply absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70 transition;
+	}
+
+	.bg-card__touch {
+		@apply absolute inset-0 -mt-12 block flex items-center justify-center lg:hidden;
+	}
+
+	.bg-card__text {
+		@apply invisible max-h-0 opacity-0 transition-all;
+	}
+
+	.bg-card:hover .bg-card__bg {
+		@apply scale-110 blur-sm;
+	}
+
+	.bg-card:hover .bg-card__touch {
+		@apply hidden;
+	}
+
+	.bg-card:hover .bg-card__text {
+		@apply visible max-h-[180px] opacity-100;
+	}
+	/* --- */
+	.input {
+		@apply hover:border-red focus:border-red block w-full appearance-none rounded-2xl border border-gray-500 bg-white px-4 py-3 text-base font-light text-black outline-none transition-all hover:placeholder:text-black focus:ring-0 xs:rounded-[1.25rem] xs:px-6 xs:py-5 xs:text-[1.125rem];
+	}
+	.input::placeholder {
+		@apply text-grayborder-gray-500 font-sans text-base font-light transition-colors xs:text-lg;
+	}
+	.checkbox:checked + div {
+		@apply border-x-gray-950;
+	}
+	.checkbox:focus + div {
+		@apply border-red-400/50 shadow-[0_35px_60px_-15px_rgba(0,0,0,1)];
+	}
+	.checkbox:checked + div svg {
+		@apply visible opacity-100;
+	}
+
+	/* --- */
+
+	.choices__inner {
+	}
+
+	/* --- */
+
+	/* --- */
+
+	/* --- */
+
+	/* --- */
+}
+
+@layer utilities {
+	.h-screen-fix {
+		height: calc(var(--vh, 1vh) * 100);
+	}
+
+	.animation-delay-1000 {
+		animation-delay: 1s;
+	}
+
+	.animation-delay-2000 {
+		animation-delay: 2s;
+	}
+
+	.animation-delay-3000 {
+		animation-delay: 3s;
+	}
+
+	.animation-delay-4000 {
+		animation-delay: 4s;
 	}
 }
