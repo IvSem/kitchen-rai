@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,18 +32,10 @@ Route::middleware('auth')->group(function () {
 });
 
 // Admin
-Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('/test', function () {
+Route::middleware(['role:admin'])->prefix('kitchen-admin')->group(function (){
+    Route::get('/', [HomeController::class, 'index'])->name('homeAdmin');
 
-        echo "<pre>";
-        var_dump(
-            's'
-        );
-
-        die();
-        echo "</pre>";
-        return view('test');
-    });
+    Route::resource('category', CategoryController::class);
 });
 
 require __DIR__.'/auth.php';
