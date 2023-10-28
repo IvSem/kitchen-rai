@@ -6,18 +6,18 @@
 @layer base {
 	body,
 	html {
-		@apply h-full;
+		@apply h-full text-main-text dark:text-white;
 	}
 	body {
-		@apply bg-white font-sans text-base font-medium  dark:text-white/70 sm:text-lg;
+		@apply font-sans text-base sm:text-lg;
 	}
 
 	.wrapper {
-		@apply flex min-h-full flex-col overflow-hidden dark:bg-tone-night-bg dark:text-tone-day-100;
+		@apply flex min-h-full flex-col overflow-hidden;
 	}
 
 	.dark {
-		@apply bg-gray-800 text-white/70;
+		@apply bg-tone-night-bg text-white;
 	}
 
 	[x-cloak] {
@@ -37,7 +37,7 @@
 	}
 
 	.dark *::-webkit-scrollbar-track {
-		@apply bg-[#222];
+		@apply bg-tone-night-bg;
 	}
 
 	*::-webkit-scrollbar-thumb {
@@ -45,11 +45,11 @@
 	}
 
 	.dark *::-webkit-scrollbar-thumb {
-		@apply rounded bg-[#444];
+		@apply rounded bg-tone-night-500;
 	}
 
 	*::-webkit-scrollbar-thumb:hover {
-		@apply bg-red-300;
+		@apply bg-primary-500;
 	}
 
 	.stage,
@@ -141,13 +141,17 @@
 
 @layer components {
 	.navbar {
-		@apply fixed top-0 z-40 h-full w-full overflow-auto bg-black before:fixed before:left-0 before:top-0 before:z-[41] before:h-[60px] before:w-full before:bg-gray-50 max-[768px]:pb-10 max-[768px]:pt-[97px];
+		@apply fixed top-0 z-40 h-full w-1/2 overflow-auto bg-indigo-600;
+	}
+	.navbar::before {
+		@apply sticky left-0 top-0 z-[41] block h-[40px] w-full bg-indigo-600;
+		content: '';
 	}
 	.navbar__inner {
 		@apply flex h-full items-center;
 	}
 	.navbar__link {
-		@apply relative inline-block whitespace-nowrap text-sm tracking-wide transition-colors hover:text-white max-[768px]:text-white;
+		@apply relative inline-block whitespace-nowrap text-4xl font-medium transition-colors lg:text-sm;
 	}
 	._after {
 		position: relative;
@@ -159,6 +163,10 @@
 			transform-origin: bottom left;
 		}
 	}
+	._after._active::after {
+		transform: scaleX(1);
+		transform-origin: bottom left;
+	}
 
 	._after::after {
 		content: '';
@@ -168,7 +176,7 @@
 		height: 2px;
 		bottom: -2px;
 		left: 0;
-		background-color: theme('colors.primary.400');
+		background-color: theme('colors.primary.500');
 		transform-origin: bottom right;
 		@apply transition-transform;
 	}
@@ -177,29 +185,6 @@
 		transform: scaleX(1);
 		transform-origin: bottom left;
 	}
-
-	/*.navbar__link::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 2px;
-      bottom: -2px;
-      left: 0;
-      background-color: theme("colors.red.lighter");
-      transform-origin: bottom right;
-      transition: transform 0.25s ease-out;
-    }
-
-    .navbar__link:hover::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
-
-    .navbar__link._active::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }*/
 
 	.section {
 		@apply py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32;
@@ -276,19 +261,21 @@
 
 	/* --- */
 	.btn {
-		@apply inline-flex h-12 flex-row items-center whitespace-nowrap rounded-full px-8 text-base tracking-wide transition-colors;
+		@apply inline-flex h-10 flex-row items-center whitespace-nowrap rounded px-4 text-sm font-medium transition-colors;
 	}
 
-	.btn-red {
-		@apply bg-red text-white transition-all duration-300;
+	.btn-orange {
+		@apply bg-primary-500 text-white transition-all duration-300;
+	}
+	.btn-orange:hover {
+		@apply bg-primary-600 text-white transition-all duration-300;
 	}
 
-	.btn-red:hover {
-		@apply bg-blue-400;
+	.btn-border {
+		@apply border border-primary-500 text-primary-500 dark:text-white;
 	}
-
-	.btn-primary {
-		@apply bg-primary-400;
+	.btn-border:hover {
+		@apply border-primary-700;
 	}
 
 	.btn-blue:hover {
@@ -296,7 +283,7 @@
 	}
 
 	.btn-has-left-icon {
-		@apply gap-4 pl-2;
+		@apply gap-4;
 	}
 
 	.btn-has-right-icon {
@@ -337,10 +324,10 @@
 	}
 	/* --- */
 	.input {
-		@apply block w-full appearance-none rounded-2xl border border-gray-500 bg-white px-4 py-3 text-base font-light text-black outline-none transition-all hover:border-red-400 hover:placeholder:text-black focus:border-red-400 focus:ring-0 xs:rounded-[1.25rem] xs:px-6 xs:py-5 xs:text-[1.125rem];
+		@apply w-full rounded border-tone-day-400 px-4 py-2 font-sans text-base font-normal text-main-text transition-colors hover:border-primary-600 focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-700 dark:bg-tone-night-400 dark:text-white dark:hover:border-primary-600 dark:focus:border-indigo-600 dark:focus:ring-indigo-600;
 	}
 	.input::placeholder {
-		@apply border-gray-500 font-sans text-base font-light text-gray-400 transition-colors xs:text-lg;
+		@apply font-sans text-base text-tone-day-600 transition-colors dark:text-white;
 	}
 	.checkbox:checked + div {
 		@apply border-x-gray-950;

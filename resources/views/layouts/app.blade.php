@@ -8,7 +8,8 @@
 	lang="uk">
 <x-sections.head />
 
-<body class="antialiased">
+<body class="antialiased"
+	:class="{ 'overflow-hidden': $store.data.menuIsOpen }">
 	<div class="wrapper ">
 		<x-sections.header />
 		@yield('content')

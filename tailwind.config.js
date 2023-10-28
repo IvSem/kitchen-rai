@@ -56,6 +56,7 @@ export default {
 				900: '#FFFFFF',
 				bg: '#232323',
 			},
+			'main-text': '#1f1f1f',
 			black: colors.black,
 			white: colors.white,
 			gray: colors.gray,

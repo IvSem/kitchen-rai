@@ -1,5 +1,5 @@
 		<div class="fixed left-0 bottom-0 z-40  "
-		x-data="{ cookies: true }">
+		x-data="{ cookies: false }">
 		<!-- Advise -->
 		<div
 		class="fixed sm:left-4 bottom-20 rounded-lg bg-white shadow-2xl w-full sm:w-1/2 xl:w-1/4 max-w-[450px] overflow-hidden dark:bg-gray-600"
