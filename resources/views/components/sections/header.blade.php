@@ -133,6 +133,7 @@
 				</ul>
 			</nav>
 			<div class="fixed top-0 left-0 z-[39] w-full h-full bg-black/20 transition-all duration-0"
+				x-cloak
 				:class="{
 				    'opacity-100 overflow-visible touch-auto left-0': $store.data.menuIsOpen,
 				    'opacity-0 overflow-hidden touch-none -left-full ': !$store
@@ -154,10 +155,42 @@
 				<span>Add recept</span>
 			</a>
 
-			<a class="btn btn-orange"
-				href="{{ route('login') }}">
-				Log in
-			</a>
+			@auth
+				<div class="flex items-center gap-4 group/logout">
+					<div>Hi, {{ Auth::user()->name }}</div>
+					<form class="flex items-center justify-center"
+						method="POST"
+						action="{{ route('logout') }}"
+						x-data="{ isConfirmed: false }"
+						x-on:submit="
+                        event.preventDefault();
+                        isConfirmed = confirm('Ви впевнені, що хочете вийти?');
+                         if (isConfirmed) {$event.target.submit();}">
+						@csrf
+						<button type="submit">
+
+							<svg class="w-[18px] h-[18px] fill-current group-hover/logout:fill-red-500 transition-colors"
+								viewBox="0 0 18 18"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M14 5L12.59 6.41L14.17 8H6V10H14.17L12.59 11.58L14 13L18 9L14 5ZM2 2H9V0H2C0.9 0 0 0.9 0 2V16C0 17.1 0.9 18 2 18H9V16H2V2Z" />
+							</svg>
+						</button>
+						{{-- <x-dropdown-link :href="route('logout')"
+							onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+							{{ __('Log Out') }}
+						</x-dropdown-link> --}}
+					</form>
+				</div>
+			@else
+				<a class="btn btn-orange"
+					href="{{ route('login') }}">
+					Log in
+				</a>
+
+			@endauth
 
 		</div>
 
